@@ -14,3 +14,4 @@ if aloraClient is not None:
     aloraClient.moveTo(0, 0)
 else:
     print('Alora window is not found')
+    input('Press any button to continue...')
