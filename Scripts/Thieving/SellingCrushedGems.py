@@ -13,16 +13,16 @@ import Setup
 os.system('cls')
 timing = [pyautogui.easeInQuad, pyautogui.easeOutQuad, pyautogui.easeInOutQuad, pyautogui.easeInBounce, pyautogui.easeInElastic]
 
-def sell():
-    print('>> Looking for the trader (this could take some time)\n') 
-    pic = pyautogui.screenshot(region=(100,100,700,400)).convert('RGB')
-    width, height = pic.size
+def sellingProcedure():
+    print('>> Looking for the trader (this could take a moment)\n') 
     pixelFound = False
-    while pixelFound is False:
+    while pixelFound == False:
+        pic = pyautogui.screenshot(region=(100,100,700,400))
+        width, height = pic.size
         for x in range(0,width,2):
             for y in range(0,height,2):
                 r,g,b = pic.getpixel((x,y))
-                if r in range(180,200) and g in range(210,230) and b in range(200,225):
+                if r == 255 and g == 0 and b == 255:
                     pyautogui.moveTo(100 + x, 100 + y, 0, random.choice(timing))
                     pyautogui.click(button='right')
                     pixelFound = True
@@ -31,28 +31,34 @@ def sell():
                 print('>> Trader found\n') 
                 break
     time.sleep(1)
+    print('>> Looking for trade menu option (this could take a moment)\n') 
+    while True:
+        pic2 = pyautogui.locateCenterOnScreen('tradeWindowOption.png', region=(0,10,900,650), confidence = 0.8)
+        if(pic2 is not None):
+            x, y = pic2
+            break
     print('>> Trading\n') 
-    x, y = pyautogui.locateCenterOnScreen('tradeWindowOption.png', region=(0,10,900,650), confidence = 0.8)
     pyautogui.moveTo(x, y, 0)
     pyautogui.click()
     time.sleep(4)
     pyautogui.moveTo(801, 416)
+    time.sleep(1)
     pyautogui.click(button='right')
     time.sleep(1)
-    pyautogui.moveTo(913, 533)
+    pyautogui.moveTo(801, 533)
     pyautogui.click()
     os.system('cls')
     
-def moveBackToBank():
+def bankingProcedure():
     print('>> Moving near the bank\n') 
-    pic = pyautogui.screenshot(region=(860,85,100,60)).convert('RGB')
+    pic = pyautogui.screenshot(region=(860,85,100,60)) #Screenshot minimap
     width, height = pic.size
     pixelFound = False
     for x in range(0,width):
         for y in range(0,height):
             r,g,b = pic.getpixel((x,y))
             if r in range(120,160) and g in range(240,256) and b in range(250,256):
-                pyautogui.moveTo(863 + x, 90 + y, 0, random.choice(timing))
+                pyautogui.moveTo(862 + x, 90 + y, 0, random.choice(timing))
                 pyautogui.click()
                 pixelFound = True
                 break
@@ -77,7 +83,7 @@ def moveBackToBank():
     print('>> Reached the area\n')
     os.system('cls')
 
-def init():
+def start():
     print('>> Moving to the area')
     time.sleep(1)
     pyautogui.moveTo(929, 44, random.uniform(0.1, 1.1), random.choice(timing)) #Move hover from home tp to stall
@@ -89,8 +95,8 @@ def init():
     time.sleep(2)
     os.system('cls')
     while 1:
-        moveBackToBank()
+        bankingProcedure()
         time.sleep(0.5)
-        sell()
+        sellingProcedure()
 
-init()
+start()

@@ -14,6 +14,14 @@ import Setup
 os.system('cls')
 timing = [pyautogui.easeInQuad, pyautogui.easeOutQuad, pyautogui.easeInOutQuad, pyautogui.easeInBounce, pyautogui.easeInElastic]
 
+def human_format(num):
+    num = float('{:.3g}'.format(num))
+    magnitude = 0
+    while abs(num) >= 1000:
+        magnitude += 1
+        num /= 1000.0
+    return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
+
 def thieveLoop():
     pyautogui.moveTo(random.randint(580, 600), random.randint(300, 320), random.uniform(0.1, 1.1), random.choice(timing)) #Hover over stall
     pyautogui.click()
@@ -36,7 +44,7 @@ def bankAllItemsFromStall(thievingIteration, crushedGemCount):
     pyautogui.click()
     time.sleep(5)
     os.system('cls')
-    print(f'Starting next iteration. \nIteration count : [{thievingIteration}]\nCrushed gems banked : ~[{crushedGemCount}]') 
+    print(f'Starting next iteration. \nIteration count : [{thievingIteration}]\nCrushed gems banked : ~[{crushedGemCount}] = ~{human_format(crushedGemCount * 10000)} gp') 
 
 def checkIfInventoryFull(): #checks if last inv spot is white
     if pyautogui.locateOnScreen('crushedGem.png', region=(910,614, 953, 648), confidence = 0.8) == None:
@@ -45,11 +53,11 @@ def checkIfInventoryFull(): #checks if last inv spot is white
         print('>> Inventory is full\n')
         return False
 def pause_script():
-    if keyboard.is_pressed('alt'):
-        print('>> Script paused [shift to resume]')
+    if keyboard.is_pressed('page up'):
+        print('>> Script paused [Page_Down to resume]')
         while True:
-            if keyboard.is_pressed('shift'):
-                print('>> Script resumed [hold alt to pause]')      
+            if keyboard.is_pressed('page down'):
+                print('>> Script resumed [hold Page_up to pause]')      
                 break
 def init():
         thievingIteration = 0
@@ -62,7 +70,7 @@ def init():
         print('>> Reached stall position\n')
         time.sleep(1)
         os.system('cls')
-        print('>> Starting || Hold alt to pause script\n')
+        print('>> Starting || Hold Page_up to pause script\n')
         while 1:
             while checkIfInventoryFull() is True:
                 thieveLoop()
@@ -75,5 +83,4 @@ def init():
 
 time.sleep(1)
 init()
-
 
