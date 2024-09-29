@@ -5,6 +5,7 @@ import re
 import sys
 import os
 import pyscreeze
+from playsound import playsound
 
 sys.path.append('../../')
 import Setup
@@ -90,6 +91,16 @@ def preFightProcedure():
     time.sleep(2)
     pyautogui.press('1') #Select 1st dialog option to enter Zulrah arena
 
+    #Uncomment if you are using heart + ghost
+    # pyautogui.moveTo(802, 414, random.uniform(0.1, 1.1), random.choice(timing)) #Click on heart
+    # pyautogui.click()
+    # time.sleep(0.5)
+    # pyautogui.press('f6')
+    # pyautogui.moveTo(825, 563, random.uniform(0.1, 1.1), random.choice(timing)) #Click on ghost spell
+    # pyautogui.click()
+    # time.sleep(0.3)
+    # pyautogui.press('esc')
+
 def checkNorth(): # TOP SPOT
     return pyautogui.screenshot(region=(435,170,70,70))
         
@@ -112,9 +123,28 @@ def checkPrayerProcedure(): #This function checks the health bar and decides if 
         time.sleep(0.2)
         pyautogui.click()
 
+def checkForSpecialAttackProcedure():
+    lowSpecPoint = pyautogui.screenshot(region=(837,180,1,1))
+    r,g,b = lowSpecPoint.getpixel((0,0))
+    if r == 52 and g == 170 and b == 199:
+        print('>> Using special attack\n')
+        pyautogui.moveTo(838,185) # Special attack widget
+        time.sleep(0.1)
+        pyautogui.click()
+
+def checkIfPlayerDeadProcedure():
+    playerNoHealthPoint = pyautogui.screenshot(region=(546,646,1,1))
+    r,g,b = playerNoHealthPoint.getpixel((0,0))
+    if r == 38 and g == 34 and b == 28:
+        print('>> You died.\n')
+        playsound('deathSound.mp3')
+        time.sleep(10)
+        raise Exception("You died")
+        
+
 def checkIfBossDeadProcedure():
     try:
-        bossRespawnTimer = pyautogui.locateCenterOnScreen('bossRespawnTimer.png', region=(13,80,70,70), confidence = 0.9)
+        bossRespawnTimer = pyautogui.locateCenterOnScreen('bossRespawnTimer.png', region=(19,46,188,133), confidence = 0.9)
     except:
         bossRespawnTimer = None
     if bossRespawnTimer is not None:
@@ -148,8 +178,10 @@ def fightProcedure():
     print('>> Engaging in combat\n')
     currentColor = 'green' #Starting color is always green
     while checkIfBossDeadProcedure() != True:
+        checkIfPlayerDeadProcedure()
         checkHealthProcedure()
-        checkPrayerProcedure() 
+        checkPrayerProcedure()
+        checkForSpecialAttackProcedure() #Comment this out if you have no special
         bossLocations = {'north': [checkNorth(),{'x':500,"y":196}], 'east': [checkEast(),{'x':778,'y':219}], 'west': [checkWest(),{'x':225,'y':221}], 'south':[checkSouth(),{'x':500,'y':522}]}
         pixelFound = False
         for location in bossLocations:
