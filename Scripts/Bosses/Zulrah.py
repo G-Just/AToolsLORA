@@ -26,7 +26,7 @@ def checkHealthProcedure(): #This function checks the health bar and decides if 
             print('>> No food detected -> leaving\n')
             pyautogui.press('f6')
             time.sleep(0.1)
-            pyautogui.moveTo(788, 402) # Home tp
+            pyautogui.moveTo(788, 405) # Home tp
             time.sleep(0.1)
             pyautogui.click()
             time.sleep(1)
@@ -50,8 +50,6 @@ def preFightProcedure():
     os.system('cls')
     time.sleep(1)
     checkHealthProcedure()
-    pyautogui.moveTo(814, 120, random.uniform(0.2, 0.5), random.choice(timing)) # Quick Prayer
-    pyautogui.click()
     print('>> Resetting health and prayer\n')
     pyautogui.moveTo(924, 42, random.uniform(0.1, 1.1), random.choice(timing)) #Click near alter area
     pyautogui.click()
@@ -122,13 +120,15 @@ def checkIfBossDeadProcedure():
     if bossRespawnTimer is not None:
         os.system('cls')
         print('>> Boss dead -> looting and leaving\n')
-        pyautogui.moveTo(501, 365, random.uniform(0.1, 1.1), random.choice(timing)) #click under your feet for loot
+        pyautogui.moveTo(814, 120, random.uniform(0.2, 0.5), random.choice(timing)) # Quick Prayer
+        pyautogui.click()
+        pyautogui.moveTo(501, 362, random.uniform(0.1, 1.1), random.choice(timing)) #click under your feet for loot
         for i in range(0,4):
             pyautogui.click()
             time.sleep(1)
         pyautogui.press('f6')
         time.sleep(0.1)
-        pyautogui.moveTo(788, 309) # Home tp
+        pyautogui.moveTo(788, 405) # Home tp
         time.sleep(0.1)
         pyautogui.click()
         time.sleep(1)
