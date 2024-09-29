@@ -1,10 +1,10 @@
 import pyautogui
-import pygetwindow
 import time
 import random
 import re
 import sys
 import os
+import pyscreeze
 
 sys.path.append('../../')
 import Setup
@@ -31,7 +31,20 @@ def checkHealthProcedure(): #This function checks the health bar and decides if 
             pyautogui.click()
             time.sleep(1)
             pyautogui.press('esc')
-            preFightProcedure()
+            print('>> Resetting health and prayer\n')
+            pyautogui.moveTo(924, 42, random.uniform(0.1, 1.1), random.choice(timing)) #Click near alter area
+            pyautogui.click()
+            time.sleep(7)
+            pyautogui.moveTo(551, 207, random.uniform(0.1, 1.1), random.choice(timing)) #Right click on surgeon
+            pyautogui.click(button='right')
+            time.sleep(1)
+            x, y = pyautogui.locateCenterOnScreen('healWindowOption.png', region=(435,194,250,260), confidence = 0.9)
+            pyautogui.moveTo(x, y, random.uniform(0.1, 1.1)) #Click on heal
+            pyautogui.click()
+            time.sleep(6)
+            pyautogui.moveTo(530, 316, random.uniform(0.1, 1.1), random.choice(timing)) #Click on altar
+            pyautogui.click()
+            raise Exception("Failsafe activated (no food + low hp)")
 
 def preFightProcedure():
     os.system('cls')
@@ -47,7 +60,7 @@ def preFightProcedure():
     pyautogui.click(button='right')
     time.sleep(1)
     x, y = pyautogui.locateCenterOnScreen('healWindowOption.png', region=(435,194,250,260), confidence = 0.9)
-    pyautogui.moveTo(x, y, random.uniform(0.1, 1.1), random.choice(timing)) #Click on heal
+    pyautogui.moveTo(x, y, random.uniform(0.1, 1.1)) #Click on heal
     pyautogui.click()
     time.sleep(6)
     pyautogui.moveTo(530, 316, random.uniform(0.1, 1.1), random.choice(timing)) #Click on altar
@@ -102,7 +115,10 @@ def checkPrayerProcedure(): #This function checks the health bar and decides if 
         pyautogui.click()
 
 def checkIfBossDeadProcedure():
-    bossRespawnTimer = pyautogui.locateCenterOnScreen('bossRespawnTimer.png', region=(13,80,70,70), confidence = 0.9)
+    try:
+        bossRespawnTimer = pyautogui.locateCenterOnScreen('bossRespawnTimer.png', region=(13,80,70,70), confidence = 0.9)
+    except:
+        bossRespawnTimer = None
     if bossRespawnTimer is not None:
         os.system('cls')
         print('>> Boss dead -> looting and leaving\n')
@@ -112,7 +128,7 @@ def checkIfBossDeadProcedure():
             time.sleep(1)
         pyautogui.press('f6')
         time.sleep(0.1)
-        pyautogui.moveTo(788, 402) # Home tp
+        pyautogui.moveTo(788, 309) # Home tp
         time.sleep(0.1)
         pyautogui.click()
         time.sleep(1)
@@ -125,7 +141,7 @@ def fightProcedure():
     os.system('cls')
     pyautogui.moveTo(814, 120, random.uniform(0.2, 0.5), random.choice(timing)) # Quick Prayer
     pyautogui.click()
-    time.sleep(4)
+    time.sleep(3)
     pyautogui.moveTo(498, 204, random.uniform(0.2, 0.5), random.choice(timing)) # Click on boss to engage
     pyautogui.click()
     time.sleep(2)
