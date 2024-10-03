@@ -23,9 +23,9 @@ def human_format(num):
     return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
 
 def thieveLoop():
-    pyautogui.moveTo(random.randint(580, 600), random.randint(300, 320), random.uniform(0.1, 1.1), random.choice(timing)) #Hover over stall
+    pyautogui.moveTo(random.randint(580, 600), random.randint(300, 320), random.uniform(0.1, 0.6), random.choice(timing)) #Hover over stall
     pyautogui.click()
-    time.sleep(random.uniform(1, 2))
+    time.sleep(random.uniform(0.1, 1))
     
 def bankAllItemsFromStall(thievingIteration, crushedGemCount):
     print('>> Banking\n')
