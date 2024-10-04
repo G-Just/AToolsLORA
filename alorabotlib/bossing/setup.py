@@ -1,12 +1,4 @@
-import pyautogui
-import re
-import time
-import random
-
-timing = [pyautogui.easeInQuad, pyautogui.easeOutQuad, pyautogui.easeInOutQuad, pyautogui.easeInBounce, pyautogui.easeInElastic]
-
-print("Don't press any keys during the setup sequence \n")
-time.sleep(1)
+from dependencies import *
 
 def setStartingPosition():
     print('3. Moving to start location...')
@@ -52,13 +44,20 @@ def windowSetup():
     else:
         print('Alora window is not found, shutting down')
         time.sleep(3)
-        
-try:
-    windowSetup()
-    screenOrientation()
-    setStartingPosition()
-except:
-    print('Something went wrong.')
+   
+   
+def setup():
+    print("Don't press any keys during the setup sequence \n")
+    time.sleep(1)
+    try:
+        windowSetup()
+        screenOrientation()
+        setStartingPosition()
+    except:
+        print('Something went wrong.')
 
-print('Success, setup is finished')
-time.sleep(2)
+    print('Success, setup is finished')
+    time.sleep(2)
+    
+setup()
+

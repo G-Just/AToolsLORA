@@ -7,9 +7,6 @@ import os
 import pyscreeze
 from playsound import playsound
 
-sys.path.append('../../../')
-import Setup
-
 os.system('cls')
 timing = [pyautogui.easeInQuad, pyautogui.easeOutQuad, pyautogui.easeInOutQuad, pyautogui.easeInBounce, pyautogui.easeInElastic]
 
@@ -146,20 +143,20 @@ try:
         time.sleep(9)
         pyautogui.moveTo(130, 45, random.uniform(0.1, 1.1), random.choice(timing)) #Click on wench (door to arena)
         pyautogui.click()
-        time.sleep(3)
-        pyautogui.moveTo(814, 120, random.uniform(0.2, 0.5), random.choice(timing)) # Quick Prayer
-        pyautogui.click()
+        time.sleep(3.5)
         pyautogui.moveTo(802, 414, random.uniform(0.1, 1.1), random.choice(timing)) #Click on first slot (buff item)
         pyautogui.click()
         time.sleep(1)
         pyautogui.moveTo(905, 55, random.uniform(0.1, 1.1), random.choice(timing)) #Click on minimap to boss
         pyautogui.click()
-        time.sleep(3)
+        time.sleep(3.5)
         pyautogui.press('f6')
         pyautogui.moveTo(825, 563, random.uniform(0.1, 1.1), random.choice(timing)) #Click on ghost spell
         pyautogui.click()
         time.sleep(0.3)
         pyautogui.press('esc')
+        pyautogui.moveTo(814, 120, random.uniform(0.2, 0.5), random.choice(timing)) # Quick Prayer
+        pyautogui.click()
         
     def fightProcedure():
         os.system('cls')
