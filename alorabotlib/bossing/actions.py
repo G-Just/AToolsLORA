@@ -2,6 +2,8 @@ from dependencies import *
 
 absolutePath = os.path.dirname(__file__) + '\\resources\\'
 
+pyautogui.FAILSAFE = False
+
 def click(x: int, y: int, buttonType: str = 'left', duration: list = [0,0], sleepBeforeClick: float = 0, sleepAfterClick: float = 0, humanize: bool = True) -> None:
     '''
     This function executes a mouse move and click with custom parameters

@@ -1,0 +1,13 @@
+
+================================================================================
+2024-10-05 10:14:53
+Uncaught exception:
+Traceback (most recent call last):
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\Zulrah.py", line 4, in <module>
+    import setup
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\setup.py", line 63, in <module>
+    setup()
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\setup.py", line 61, in setup
+    time.sleep(2)
+KeyboardInterrupt
+================================================================================

@@ -57,6 +57,7 @@ def setup():
         print('Something went wrong.')
 
     print('Success, setup is finished')
+    os.system('cls')
     time.sleep(2)
     
 setup()

@@ -72,7 +72,7 @@ def checkHealth():
             restoreHpAndPrayer()
             raise Exception("Failsafe activated (no food + low hp)")
 
-def quickPrayer():
+def clickQuickPrayer():
     '''
     This function clicks on quick Prayer
     
@@ -81,7 +81,7 @@ def quickPrayer():
 
 def useBuffItem():
     '''
-    This function clicks on buff item
+    This function clicks on buff item (1st slot)
     
     '''
     actions.click(802, 414, duration = [0.1, 1.1], sleepAfterClick = 0.5) #Click on first slot (buff item)
@@ -99,12 +99,7 @@ def checkIfBossDead(bossIcon: str, pturnOffMessages: bool = False):
     bossRespawnTimer, y = actions.findImageOnScreen(bossIcon, 19, 46, 200, 133, findConfidence = 0.9, tries = 1, turnOffMessages = pturnOffMessages)
     if bossRespawnTimer is not False:
         actions.formatPrint('Boss dead -> looting and leaving')
-        quickPrayer()
-        actions.click(501, 362, duration = [0.1, 1.1]) #click under your feet for loot
-        for i in range(0,4):
-            actions.click(501, 362, sleepAfterClick = 1)
-        actions.press('f6', 0.1)
-        actions.teleportHome()
+        clickQuickPrayer()
         return True
     else:
         return False

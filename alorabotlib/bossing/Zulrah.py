@@ -9,7 +9,7 @@ try:
         procedure.restoreHpAndPrayer()
         navigation.moveFromStallsAltarToStallsBank()
         navigation.moveFromStallsBankToZulrah()
-        procedure.quickPrayer()
+        procedure.clickQuickPrayer()
         procedure.useBuffItem()
         procedure.summonGhost()
 
@@ -112,7 +112,10 @@ try:
                                 procedure.checkForSpecialAttack()
                                 break
                         if pixelFound == True:
-                            break                 
+                            break
+        for i in range(0,4):
+            actions.click(501, 362, sleepAfterClick = 1)
+        actions.teleportHome(1)           
 
     def start():
         while True: 
