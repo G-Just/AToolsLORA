@@ -24,7 +24,7 @@ def fight():
     for i in range(0,5):
         actions.click(501, 362, duration=[0.1, 1.1], sleepAfterClick=0.4) #click under your feet for loot  
     actions.teleportHome(1)
-        
+    
 def start():
     while True: 
         preFight()
