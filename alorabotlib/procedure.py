@@ -34,7 +34,7 @@ def checkForSpecialAttack():
     r,g,b = actions.getPixelColor(0, 0, lowSpecPoint)
     if r == 52 and g == 170 and b == 199:
         actions.formatPrint('Using special attack')
-        actions.click(838, 185, duration = [0.1,0.5],sleepAfterClick = 0.2) # Special attack widget
+        actions.click(838, 185, duration = [0.1,0.5],sleepAfterClick = 0.1) # Special attack widget
 
 def checkIfPlayerDead():
     '''

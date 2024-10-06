@@ -1,0 +1,18 @@
+
+================================================================================
+2024-10-06 01:52:49
+Uncaught exception:
+Traceback (most recent call last):
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\Cerberus.py", line 35, in <module>
+    start()
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\Cerberus.py", line 32, in start
+    preFight()
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\Cerberus.py", line 10, in preFight
+    navigation.moveFromStallsBankToCerberus()
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\navigation.py", line 44, in moveFromStallsBankToCerberus
+    actions.click(466, 420, duration=[0.1, 1.1], sleepAfterClick=1.5) #Click on wizard
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\actions.py", line 21, in click
+    time.sleep(sleepAfterClick)
+KeyboardInterrupt
+================================================================================

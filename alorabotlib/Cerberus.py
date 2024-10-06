@@ -9,9 +9,11 @@ def preFight():
     navigation.moveFromStallsAltarToStallsBank()
     navigation.moveFromStallsBankToCerberus()
     procedure.useBuffItem()
-    actions.click(905, 35, duration=[0.1, 1.1], sleepAfterClick=6.5) #Click on minimap to boss
+    actions.click(905, 35, duration=[0.1, 1.1], sleepAfterClick=6) #Click on minimap to boss
     procedure.clickQuickPrayer()
     procedure.summonGhost()
+    actions.click(500, 285, duration=[0.1, 1.1]) #Click on minimap to boss
+    
 
 def fight():
     actions.formatPrint('Engaging in combat')
@@ -21,8 +23,8 @@ def fight():
         procedure.checkForSpecialAttack()
         procedure.checkIfPlayerDead()
     actions.click(500, 284, duration=[0.1, 1.1], sleepAfterClick=2) #click offset to boss location
-    for i in range(0,5):
-        actions.click(501, 362, duration=[0.1, 1.1], sleepAfterClick=0.4) #click under your feet for loot  
+    for i in range(0,3):
+        actions.click(501, 362, duration=[0.1, 1.1], sleepAfterClick=0.2) #click under your feet for loot  
     actions.teleportHome(1)
     
 def start():
