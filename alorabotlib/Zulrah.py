@@ -86,7 +86,7 @@ def fight():
                             break
                     if pixelFound == True:
                         break
-            else:
+            elif currentColor == 'red':
                 width, height = bossLocations[location][0].size
                 for x in range(0,width):
                     for y in range(0,height):

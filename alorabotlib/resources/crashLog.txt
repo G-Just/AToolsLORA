@@ -1,18 +1,17 @@
 
 ================================================================================
-2024-10-06 01:52:49
+2024-10-26 22:17:12
 Uncaught exception:
 Traceback (most recent call last):
-  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\Cerberus.py", line 35, in <module>
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\Cerberus.py", line 36, in <module>
     start()
-  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\Cerberus.py", line 32, in start
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\Cerberus.py", line 33, in start
     preFight()
-  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\Cerberus.py", line 10, in preFight
-    navigation.moveFromStallsBankToCerberus()
-  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\navigation.py", line 44, in moveFromStallsBankToCerberus
-    actions.click(466, 420, duration=[0.1, 1.1], sleepAfterClick=1.5) #Click on wizard
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\bossing\actions.py", line 21, in click
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\Cerberus.py", line 9, in preFight
+    navigation.moveFromStallsAltarToStallsBank()
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\navigation.py", line 20, in moveFromStallsAltarToStallsBank
+    actions.click(x, y, duration=[0.1, 1.1], sleepAfterClick=4, humanize=False)
+  File "C:\Users\gjust\Desktop\aloraBOT\alorabotlib\actions.py", line 21, in click
     time.sleep(sleepAfterClick)
 KeyboardInterrupt
 ================================================================================

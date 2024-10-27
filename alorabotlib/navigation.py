@@ -40,9 +40,17 @@ def moveFromStallsBankToCerberus():
 
     '''
     actions.formatPrint('Moving from bank to Cerberus')
-    actions.click(849, 157, duration=[0.1, 1.1], sleepAfterClick=6, sleepBeforeClick=1) #Minimap click to wizard
+    actions.click(849, 157, duration=[0.1, 1.1], sleepAfterClick=7.5, sleepBeforeClick=1) #Minimap click to wizard
     actions.click(466, 420, duration=[0.1, 1.1], sleepAfterClick=1.5) #Click on wizard
     actions.click(218, 240, duration=[0.1, 1.1], sleepAfterClick=0.5) #Click on bosses tab
     actions.click(365, 299, duration=[0.1, 1.1], sleepAfterClick=4) #Click on cerberus tp
     actions.click(130, 45, duration=[0.1, 1.1], sleepAfterClick=13) #Click on wench (door to arena)
     
+def moveFromHomeToDonatorZone():
+    '''
+    This function navigates the player from home to donator zone
+
+    '''
+    actions.formatPrint('Moving from home to Fishing Guild')
+    actions.typeToChat('::dz')# Tp to donator zone
+    actions.click(936, 69, duration=[0.1, 1.1], sleepAfterClick=6, sleepBeforeClick=2.5) #Minimap click to fishing spot

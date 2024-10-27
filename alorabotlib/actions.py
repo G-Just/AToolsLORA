@@ -81,13 +81,15 @@ def findImageOnScreen(resource: str, x: int, y: int, length: int, height: int, f
     :param height: height of the screenshot window
     :param findConfidence: how much should the images match (0 - 1)
     :param tries: how many times to try before timing out
+    :param turnOffMessages: should the message be outputted about the return of this function
 
     '''
     while tries > 0:
         try:
             x, y = pyautogui.locateCenterOnScreen(absolutePath + resource, region=(x , y, length, height), confidence = findConfidence)
             if (x is not None and y is not None):
-                formatPrint(f'{resource} found!')
+                if (turnOffMessages is False):
+                    formatPrint(f'{resource} found!')
                 return x, y
         except:
             if (turnOffMessages is False):
@@ -132,6 +134,7 @@ def findColorInRegion(x: int, y: int, length: int, height: int, red: int, green:
                     formatPrint(f'Specified color found!')
                     return x + xCord, y + yCord
         formatPrint(f'Unable to find specified color -> looking again | {tries - 1} tries remaining', False)
+        innerScreenshot = getScreenshot(x, y, length, height)
         tries -= 1
         time.sleep(1.5)
     return False, False # 2 false because we need to return 2 values
@@ -153,3 +156,20 @@ def clearConsole():
 
     '''
     os.system('cls')
+    
+def moveCursorToCenter():
+    '''
+    This function moves the cursor to the center of the screen
+
+    '''
+    pyautogui.moveTo(501, 362)
+    
+def typeToChat(Message: str):
+    '''
+    This function types a message in the chat
+
+    '''
+    pyautogui.press('Enter')
+    pyautogui.typewrite(Message,0.1)
+    time.sleep(0.5)
+    pyautogui.press('Enter')
